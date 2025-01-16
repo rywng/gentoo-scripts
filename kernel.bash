@@ -5,7 +5,7 @@ export KCFLAGS='-march=native -pipe'
 export KCPPFLAGS='-march=native -pipe'
 
 kernel_directory=$(realpath /usr/src/* | sort | uniq | fzf --no-sort --tac)
-vcs_directory="/root/kernel-vcs"
+vcs_directory="/root/repos/kernel-vcs"
 vcs_branch=$(qfile -q -F '%{PN}' $kernel_directory )
 
 # This makes sure the @module-rebuild will properly build modules for new kernel
