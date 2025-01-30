@@ -3,6 +3,9 @@
 export LLVM=1
 export KCFLAGS='-march=native -pipe'
 export KCPPFLAGS='-march=native -pipe'
+# Use ccache for kernel building
+export PATH="/usr/lib/ccache/bin${PATH:+:}$PATH"
+export KBUILD_BUILD_TIMESTAMP='' # Fix ccache not no hit
 
 kernel_directory=$(realpath /usr/src/* | sort | uniq | fzf --no-sort --tac)
 vcs_directory="/root/repos/kernel-vcs"
