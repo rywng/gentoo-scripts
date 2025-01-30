@@ -26,5 +26,5 @@ echo "Updating flatpak"
 flatpak update -y
 flatpak uninstall --unused -y --delete-data
 
-su ryan -c "flatpak update -y"
-su ryan -c "flatpak uninstall --unused -y --delete-data"
+echo "Cleaning up old distfiles"
+eclean-dist --time-limit=2w
