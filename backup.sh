@@ -16,15 +16,25 @@ info "Starting backup"
 # Backup the most important directories into an archive named after
 # the machine this script is currently running on:
 
+if [ -d $HOME_SNAPSHOT_DIR ];then
+	borg create \
+		::'home-{now}' \
+		$HOME_SNAPSHOT_DIR/./*/Documents/ \
+		--exclude '*/games/*' \
+		--exclude '*/package/*' \
+		--exclude '*/target/*' \
+		--exclude '*cache*' \
+		--show-rc \
+		--stats \
+		--progress \
+		-C zstd,8
+fi
+
 borg create \
-	::'{hostname}-{now}' \
+	::'root-{now}' \
 	$ROOT_SNAPSHOT_DIR/./etc \
 	$ROOT_SNAPSHOT_DIR/./root/keys \
 	$ROOT_SNAPSHOT_DIR/./var \
-	$HOME_SNAPSHOT_DIR/./*/Documents/ \
-	--exclude '*/games/*' \
-	--exclude '*/package/*' \
-	--exclude '*/target/*' \
 	--exclude '*cache*' \
 	--exclude '*/var/lib/libvirt/images/*' \
 	--exclude '*/var/db/pkg/*' \
@@ -45,9 +55,19 @@ info "Pruning repository"
 # limit prune's operation to this machine's archives and not apply to
 # other machines' archives also:
 
+if [ -d $HOME_SNAPSHOT_DIR ];then
+	borg prune \
+		--list \
+		--glob-archives 'home-*' \
+		--show-rc \
+		--keep-daily 7 \
+		--keep-weekly 4 \
+		--keep-monthly 6
+fi
+
 borg prune \
 	--list \
-	--glob-archives '{hostname}-*' \
+	--glob-archives 'root-*' \
 	--show-rc \
 	--keep-daily 7 \
 	--keep-weekly 4 \
