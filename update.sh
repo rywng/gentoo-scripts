@@ -6,8 +6,7 @@ if [ ! $(id -u) -eq 0 ]; then
 fi
 
 echo "Syncing repos"
-emaint sync --allrepos
-emerge --regen --jobs=16
+emaint --auto sync
 eix-update
 
 echo "GLSA info:"
