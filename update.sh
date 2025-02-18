@@ -7,6 +7,7 @@ fi
 
 echo "Syncing repos"
 emaint --auto sync
+emerge --regen --jobs=`nproc` --quiet
 eix-update
 
 echo "GLSA info:"
