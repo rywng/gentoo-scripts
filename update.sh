@@ -22,9 +22,11 @@ sleep 3s
 emerge -atvquDN @world &&
 	emerge --depclean
 
-echo "Updating flatpak"
-flatpak update -y
-flatpak uninstall --unused -y --delete-data
+if command -v flatpak > /dev/null ; then
+	echo "Updating flatpak"
+	flatpak update -y
+	flatpak uninstall --unused -y --delete-data
+fi
 
 echo "Cleaning up old distfiles"
 eclean-dist --time-limit=2w
