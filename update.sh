@@ -11,14 +11,9 @@ emerge --regen --jobs=`nproc` --quiet
 eix-update
 
 echo "GLSA info:"
-echo
-
 glsa-check --list
 
-echo
 echo "Updating software"
-sleep 3s
-
 emerge -atvquDN @world &&
 	emerge --depclean
 
