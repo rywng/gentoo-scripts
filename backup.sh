@@ -1,5 +1,8 @@
 #!/bin/sh
 
+echo "Starting backup in 1 minute"
+sleep 1m
+
 SNAPSHOT_DIR=/root/snapshots
 HOME_SNAPSHOT_DIR=`realpath $SNAPSHOT_DIR/home* | sort | tail -n1`
 ROOT_SNAPSHOT_DIR=`realpath $SNAPSHOT_DIR/ROOT* | sort | tail -n1`
@@ -20,7 +23,7 @@ if [ -d $HOME_SNAPSHOT_DIR ];then
 	borg create \
 		::'home-{now}' \
 		$HOME_SNAPSHOT_DIR/./*/Documents/ \
-		--exclude '*/games/*' \
+		--exclude '*/games/steam/*' \
 		--exclude '*/package/*' \
 		--exclude '*/target/*' \
 		--exclude '*cache*' \
@@ -32,8 +35,10 @@ fi
 
 borg create \
 	::'root-{now}' \
+	$ROOT_SNAPSHOT_DIR/./boot \
 	$ROOT_SNAPSHOT_DIR/./etc \
 	$ROOT_SNAPSHOT_DIR/./root/keys \
+	$ROOT_SNAPSHOT_DIR/./usr \
 	$ROOT_SNAPSHOT_DIR/./var \
 	--exclude '*cache*' \
 	--exclude '*/var/lib/libvirt/images/*' \
