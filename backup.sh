@@ -22,7 +22,7 @@ info "Starting backup"
 if [ -d $HOME_SNAPSHOT_DIR ];then
 	borg create \
 		::'home-{now}' \
-		$HOME_SNAPSHOT_DIR/. \
+		$HOME_SNAPSHOT_DIR/./*/Documents/ \
 		--exclude '*/games/steam/*' \
 		--exclude '*/package/*' \
 		--exclude '*/target/*' \
