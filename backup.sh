@@ -40,12 +40,13 @@ borg create \
 	$ROOT_SNAPSHOT_DIR/./root/keys \
 	$ROOT_SNAPSHOT_DIR/./usr \
 	$ROOT_SNAPSHOT_DIR/./var \
-	--exclude '*cache*' \
-	--exclude '*/var/lib/libvirt/images/*' \
+	--exclude '*/usr/src/*' \
 	--exclude '*/var/db/pkg/*' \
 	--exclude '*/var/db/repos/*' \
 	--exclude '*/var/lib/flatpak/repo/objects/*' \
+	--exclude '*/var/lib/libvirt/images/*' \
 	--exclude '*/var/tmp/*' \
+	--exclude '*cache*' \
 	--show-rc \
 	--stats \
 	--progress \
