@@ -14,7 +14,7 @@ echo "GLSA info:"
 glsa-check --list
 
 echo "Updating software"
-emerge -atvquDN @world &&
+emerge -atvquDN --with-bdeps=y @world &&
 	emerge --depclean
 
 if command -v flatpak > /dev/null ; then
