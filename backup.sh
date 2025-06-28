@@ -3,9 +3,8 @@
 echo "Starting backup in 1 minute"
 sleep 1m
 
-SNAPSHOT_DIR=/root/snapshots
-HOME_SNAPSHOT_DIR=`realpath $SNAPSHOT_DIR/home* | sort | tail -n1`
-ROOT_SNAPSHOT_DIR=`realpath $SNAPSHOT_DIR/ROOT* | sort | tail -n1`
+HOME_SNAPSHOT_DIR=/home
+ROOT_SNAPSHOT_DIR=/
 
 # BORG_REPO and BORG_PASSPHRASE should be set in another file not in git
 . `dirname $0`/.borg.env
