@@ -1,8 +1,5 @@
 #!/bin/sh
 
-echo "Starting backup in 1 minute"
-sleep 1m
-
 HOME_SNAPSHOT_DIR=/home
 ROOT_SNAPSHOT_DIR=/
 
