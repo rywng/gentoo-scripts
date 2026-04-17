@@ -41,6 +41,7 @@ borg create \
 	--exclude '*/var/db/repos/*' \
 	--exclude '*/var/lib/flatpak/repo/objects/*' \
 	--exclude '*/var/lib/libvirt/images/*' \
+	--exclude '*/var/log/journal/*' \
 	--exclude '*/var/tmp/*' \
 	--exclude '*cache*' \
 	--show-rc \
