@@ -25,3 +25,6 @@ fi
 
 echo "Cleaning up old distfiles"
 eclean-dist --time-limit=2w
+
+echo "Cleaning up old kernel versions"
+eclean-kernel -n3
