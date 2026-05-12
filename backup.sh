@@ -36,13 +36,13 @@ borg create \
 	$ROOT_SNAPSHOT_DIR/./root/keys \
 	$ROOT_SNAPSHOT_DIR/./usr \
 	$ROOT_SNAPSHOT_DIR/./var \
-	--exclude '*/usr/src/*' \
-	--exclude '*/var/db/pkg/*' \
-	--exclude '*/var/db/repos/*' \
-	--exclude '*/var/lib/flatpak/repo/objects/*' \
-	--exclude '*/var/lib/libvirt/images/*' \
-	--exclude '*/var/log/journal/*' \
-	--exclude '*/var/tmp/*' \
+	--exclude 'usr/src/*' \
+	--exclude 'var/db/pkg/*' \
+	--exclude 'var/db/repos/*' \
+	--exclude 'var/lib/flatpak/repo/objects/*' \
+	--exclude 'var/lib/libvirt/images/*' \
+	--exclude 'var/log/journal/*' \
+	--exclude 'var/tmp/*' \
 	--exclude '*cache*' \
 	--show-rc \
 	--stats \
